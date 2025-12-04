@@ -1,0 +1,25 @@
+[telegram]
+Enabled="true"
+Token="[8596622001:AAHpu4ebqENpJeaiBmQi_SxRlT06NSEzWRE]"
+# Необязательно, но полезно для корректного отображения имен:
+RemoteNickFormat="<${NICK}>"
+
+[whatsapp]
+Enabled="true"
+# Обязательно. Имя, которое будет отображаться в логах при сканировании QR:
+Name="RenderBridge"
+# Обязательно. Папка, где Matterbridge будет хранить сессию (на Render это будет временное хранилище, но Matterbridge умеет хранить сессию в памяти, что нам и нужно для PaaS):
+DataDir="./data" 
+
+[[gateway]]
+Name="whatsapp-telegram-bridge"
+Enable=true
+# Формат: Протокол.ИмяПротокола.IDЧата/Группы
+# ID Группы WhatsApp нужно будет узнать после первого запуска, но для начала используй 'personal' 
+# или просто любое имя, оно будет заменено после сканирования QR.
+
+# ID чата Telegram (из Шага 1)
+Inbound="telegram.telegram.[-4697100211]"
+
+# Имя, которое Matterbridge присвоит твоему WA-клиенту. Сначала его нужно будет заменить:
+Outbound="whatsapp.whatsapp.[ID_ВАШЕЙ_ГРУППЫ_WHATSAPP]"
