@@ -12,4 +12,4 @@ ENTRYPOINT ["/bin/sh", "-c"]
 
 # ВАЖНО: Мы запускаем matterbridge, ждем, чтобы он создал файл QR-кода, 
 # а затем немедленно выводим содержимое этого файла на экран (в логи).
-CMD ["echo \"$MATTERBRIDGE_CONFIG\" > /matterbridge.toml && matterbridge -conf /matterbridge.toml & sleep 5 && cat matterbridge-qr.txt"]
+CMD ["echo \"$MATTERBRIDGE_CONFIG\" > /matterbridge.toml && matterbridge -conf /matterbridge.toml & sleep 10 && cat matterbridge-qr.txt"]
