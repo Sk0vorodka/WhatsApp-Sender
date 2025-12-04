@@ -1,6 +1,6 @@
 [telegram]
 Enabled="true"
-Token="[8596622001:AAHpu4ebqENpJeaiBmQi_SxRlT06NSEzWRE]"
+Token="8596622001:AAHpu4ebqENpJeaiBmQi_SxRlT06NSEzWRE"
 RemoteNickFormat="<${NICK}>" # Используйте двойные кавычки для значений
 
 [whatsapp]
@@ -13,7 +13,7 @@ Name="whatsapp-telegram-bridge"
 Enable=true
 
 # Входной канал (Telegram)
-Inbound="telegram.telegram.[-4697100211]"
+Inbound="telegram.telegram.-4697100211"
 
 # Выходной канал (WhatsApp, пока что используем заглушку)
 Outbound="whatsapp.whatsapp.[ID_ВАШЕЙ_ГРУППЫ_WHATSAPP]"
