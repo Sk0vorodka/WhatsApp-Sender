@@ -1,8 +1,12 @@
 FROM 42wim/matterbridge:latest
 
-# Переключаемся на пользователя root, чтобы гарантировать право на запись файла конфигурации
+# Переключаемся на root для прав записи
 USER root
 
-# Используем ENTRYPOINT в "exec-формате" (квадратные скобки).
-# Это жестко задает команду запуска, игнорируя любые настройки по умолчанию.
-ENTRYPOINT ["/bin/sh", "-c", "echo \"$MATTERBRIDGE_CONFIG\" > /matterbridge.toml && /matterbridge -conf /matterbridge.toml"]
+# Сбрасываем entrypoint
+ENTRYPOINT []
+
+# ИСПРАВЛЕНИЕ:
+# 1. Записываем конфиг в файл /matterbridge.toml
+# 2. Запускаем "matterbridge" (БЕЗ слэша в начале), чтобы система сама его нашла.
+CMD /bin/sh -c "echo \"$MATTERBRIDGE_CONFIG\" > /matterbridge.toml && matterbridge -conf /matterbridge.toml"
