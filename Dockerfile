@@ -1,10 +1,8 @@
 FROM 42wim/matterbridge:latest
 
-# КРИТИЧЕСКИ ВАЖНО: Сбрасываем стандартную точку входа образа, 
-# чтобы мы могли выполнять свои команды shell.
-ENTRYPOINT []
+# Переключаемся на пользователя root, чтобы гарантировать право на запись файла конфигурации
+USER root
 
-# 1. Берем переменную окружения.
-# 2. Записываем её в файл в папку /tmp (там точно есть права на запись).
-# 3. Запускаем Matterbridge с этим файлом.
-CMD /bin/sh -c "echo \"$MATTERBRIDGE_CONFIG\" > /tmp/matterbridge.toml && /matterbridge -conf /tmp/matterbridge.toml"
+# Используем ENTRYPOINT в "exec-формате" (квадратные скобки).
+# Это жестко задает команду запуска, игнорируя любые настройки по умолчанию.
+ENTRYPOINT ["/bin/sh", "-c", "echo \"$MATTERBRIDGE_CONFIG\" > /matterbridge.toml && /matterbridge -conf /matterbridge.toml"]
