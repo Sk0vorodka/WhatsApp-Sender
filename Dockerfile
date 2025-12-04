@@ -1,4 +1,4 @@
 FROM 42wim/matterbridge:latest
 
-# Команда для запуска, которая читает переменную $MATTERBRIDGE_CONFIG и создает из нее файл.
+# Эта команда создает файл matterbridge.toml из переменной окружения
 CMD /bin/sh -c 'echo "$MATTERBRIDGE_CONFIG" > /etc/matterbridge/matterbridge.toml && /matterbridge -conf /etc/matterbridge/matterbridge.toml'
